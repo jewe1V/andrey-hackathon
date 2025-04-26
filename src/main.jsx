@@ -15,6 +15,7 @@ import {AdminLoginPage} from "./autorization/AdminLoginPage.jsx";
 import {TeamPage} from "./pages/TeamPage.jsx";
 import {HackathonPage} from "./admin-pages/HackathonPage.jsx";
 import {CasesPage} from "./admin-pages/CasesPage.jsx";
+import {ProfilePage} from "./pages/ProfilePage.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
               <Route index element={<Navigate to="hackathons" />} />
               <Route path="/main/hackathons" element={<HackathonUserPage />} />
               <Route path='/main/team' element={<TeamPage />} />
+              <Route path='/main/profile' element={<ProfilePage />} />
 
           </Route>
 

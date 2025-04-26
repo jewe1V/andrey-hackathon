@@ -3,7 +3,7 @@ import '../styles/MainPage.css'
 
 const navigation_List = {
     "Хакатоны": "/main/hackathons",
-    "Кейсы": "/main/cases",
+    "Мой профиль": "/main/profile",
     "Команда": "/main/team",
     "Настройки": "/main/settings",
 };
