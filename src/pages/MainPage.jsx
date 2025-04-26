@@ -10,24 +10,40 @@ const navigation_List = {
 
 export const MainPage = () => {
     const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    };
 
     return (
         <div className="main-page-root">
             <header className="main-page-header">
                     <h1 className="main-page-title">Хакатон G2G4</h1>
                     <div className="main-page-auth-buttons">
-                        <button
-                            onClick={() => navigate('/login')}
-                            className="main-page-auth-button"
-                        >
-                            Вход
-                        </button>
-                        <button
-                            onClick={() => navigate('/register')}
-                            className="main-page-auth-button"
-                        >
-                            Регистрация
-                        </button>
+                        {token ? (
+                            <button
+                                onClick={handleLogout}
+                                className="main-page-auth-button logout"
+                            >
+                                Выход
+                            </button>
+                        ) : (
+                            <>
+                                <button
+                                    onClick={() => navigate('/login')}
+                                    className="main-page-auth-button"
+                                >
+                                    Вход
+                                </button>
+                                <button
+                                    onClick={() => navigate('/register')}
+                                    className="main-page-auth-button"
+                                >
+                                    Регистрация
+                                </button>
+                            </>
+                        )}
                     </div>
             </header>
 

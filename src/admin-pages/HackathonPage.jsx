@@ -223,17 +223,6 @@ export const HackathonPage = () => {
                         initialData={editHackathon}
                     />
                 )}
-
-                {/* Кнопка выхода */}
-                <button
-                    onClick={() => {
-                        localStorage.removeItem('token');
-                        navigate('/login');
-                    }}
-                    className="hackathon-logout-btn"
-                >
-                    Выйти
-                </button>
             </div>
         </div>
     );

@@ -19,8 +19,12 @@ body {
     background: #333333;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 0px 26px rgba(34, 255, 0, 0.47);
     text-align: center;
+    transition: 0.4s;
+}
+
+.profile-card:hover {
+    box-shadow: 0 0px 26px rgba(34, 255, 0, 0.47);
 }
 
 .no-profile {

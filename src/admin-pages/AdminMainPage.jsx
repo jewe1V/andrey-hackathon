@@ -31,16 +31,10 @@ export const AdminMainPage = () => {
                     ) : (
                         <>
                             <button
-                                onClick={() => navigate('/login')}
+                                onClick={() => navigate('/admin/login')}
                                 className="main-page-auth-button"
                             >
                                 Вход
-                            </button>
-                            <button
-                                onClick={() => navigate('/register')}
-                                className="main-page-auth-button"
-                            >
-                                Регистрация
                             </button>
                         </>
                     )}
