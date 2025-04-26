@@ -1,0 +1,218 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+
+}
+
+.hackathon-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.hackathon-page-box {
+    background: #2c2c2c;
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 1250px;
+    text-align: center;
+}
+
+.hackathon-page-box h2 {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hackathon-page-box h3 {
+    color: #ccc;
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+.hackathon-error-message {
+    color: #ff4d4d;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.hackathon-search-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.hackathon-search-group label {
+    color: #ccc;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.hackathon-search-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #39ff14;
+    border-radius: 8px;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.hackathon-search-group input:focus {
+    border-color: #00cc00;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+.hackathon-search-group input.hackathon-error {
+    border-color: #ff4d4d;
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+}
+
+.hackathon-search-group .hackathon-error-message {
+    margin-top: 5px;
+    font-size: 12px;
+    display: block;
+}
+
+.hackathon-create-btn,
+.hackathon-search-btn,
+.hackathon-edit-btn,
+.hackathon-delete-btn,
+.hackathon-logout-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hackathon-create-btn {
+    width: 100%;
+    background: #39ff14;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.hackathon-create-btn:hover {
+    background: #00cc00;
+    transform: translateY(-2px);
+}
+
+.hackathon-search-btn {
+    background: #39ff14;
+    color: #1a1a1a;
+    margin-left: 10px;
+}
+
+.hackathon-search-btn:hover {
+    background: #00cc00;
+}
+
+.hackathon-edit-btn {
+    background: #39ff14;
+    color: #1a1a1a;
+    margin-right: 10px;
+}
+
+.hackathon-edit-btn:hover {
+    background: #00cc00;
+}
+
+.hackathon-delete-btn {
+    background: #ff4d4d;
+    color: #fff;
+}
+
+.hackathon-delete-btn:hover {
+    background: #cc0000;
+}
+
+.hackathon-logout-btn {
+    background: #ff4d4d;
+    color: #fff;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.hackathon-logout-btn:hover {
+    background: #cc0000;
+}
+
+.hackathon-list-group {
+    text-align: left;
+}
+
+.hackathon-list-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.hackathon-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: #3a3a3a;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease;
+}
+
+.hackathon-item:hover {
+    transform: translateY(-2px);
+}
+
+.hackathon-item div {
+    flex: 1;
+}
+
+.hackathon-item strong {
+    color: #39ff14;
+    font-size: 18px;
+}
+
+.hackathon-item p {
+    color: #ccc;
+    margin: 5px 0;
+    font-size: 14px;
+
+}
+
+.hackathon-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.hackathon-page-box p {
+    color: #ccc;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.hackathon-toggle-btn {
+    background: #808080;
+    color: #000000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left: 0.5rem;
+}
+
+.hackathon-toggle-btn:hover {
+    background: #b8b8b8;
+}
+

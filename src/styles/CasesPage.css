@@ -1,0 +1,137 @@
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.cases-page-container {
+    max-width: 1250px;
+    padding: 0 1rem;
+    background: #2c2c2c;
+    margin-top: 15px;
+    border-radius: 14px;
+    min-height: 80vh;
+}
+
+.cases-page-box {
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+
+    margin-bottom: 1rem;
+}
+
+.cases-create-btn {
+    background: #1cff00;
+    color: #000;
+    border: none;
+
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s;
+    margin-bottom: 1rem;
+}
+
+.cases-create-btn:hover {
+    background: #37bc10;
+}
+
+.cases-btn {
+    background: #13ff00;
+    color: #000;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    margin-right: 0.5rem;
+}
+
+.cases-btn:hover {
+    background: #27ae60;
+}
+
+
+
+.cases-btn.secondary:hover {
+
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.cases-list-group {
+    margin-top: 2rem;
+}
+
+.cases-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #232323;
+}
+
+.cases-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.cases-edit-btn,
+.cases-delete-btn {
+    background: #00c103;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.cases-edit-btn:hover,
+.cases-delete-btn:hover {
+    background: #27ae60;
+}
+
+.cases-delete-btn {
+    background: #e74c3c;
+}
+
+.cases-delete-btn:hover {
+    background: #c0392b;
+}
+
+.cases-error-message {
+    color: #e74c3c;
+    margin-bottom: 1rem;
+}

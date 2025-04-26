@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/LoginPage.css';
 
-export const LoginPage = () => {
-    const [email, setEmail] = useState('');
+export const AdminLoginPage = () => {
+    const [nickName, setNickName] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
 
@@ -15,16 +15,6 @@ export const LoginPage = () => {
 
     const validateForm = () => {
         const newErrors = {};
-
-        // Проверка email
-        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
-            newErrors.email = 'Неверный формат email';
-        }
-
-        // Проверка password: минимум 8 символов, содержит специальный символ
-        if (!/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
-            newErrors.password = 'Пароль: мин. 8 символов, 1 спецсимвол (!@#$%^&*)';
-        }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -39,14 +29,12 @@ export const LoginPage = () => {
         }
 
         try {
-            // Формируем URL с параметрами
             const queryParams = new URLSearchParams({
-                email,
+                nickName,
                 password,
             }).toString();
-            const url = `${API_URL}/auth/login?${queryParams}`;
+            const url = `${API_URL}/auth/admin-login?${queryParams}`;
 
-            // Отправляем GET-запрос с помощью fetch
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {
@@ -54,7 +42,6 @@ export const LoginPage = () => {
                 },
             });
 
-            // Проверяем, успешен ли запрос
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(
@@ -64,15 +51,13 @@ export const LoginPage = () => {
                 );
             }
 
-            // Получаем данные ответа
             const data = await response.json();
 
-            // Предполагаем, что сервер возвращает токен в data.token
             const token = data.token;
             if (token) {
                 localStorage.setItem('token', token);
                 setErrors({});
-                navigate('/main');
+                navigate('/admin');
             } else {
                 setErrors({ server: 'Токен не получен от сервера' });
             }
@@ -87,18 +72,18 @@ export const LoginPage = () => {
     return (
         <div className="login-container">
             <div className="login-box">
-                <h2>Вход</h2>
+                <h2>Администрация</h2>
                 {errors.server && <p className="error-message">{errors.server}</p>}
                 <form onSubmit={handleLogin}>
                     <div className="input-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Имя</label>
                         <input
-                            type="email"
+                            type="text"
                             id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={nickName}
+                            onChange={(e) => setNickName(e.target.value)}
                             required
-                            placeholder="Введите email"
+                            placeholder="Введите Nickname"
                             className={errors.email ? 'error' : ''}
                         />
                         {errors.email && <span className="error-message">{errors.email}</span>}

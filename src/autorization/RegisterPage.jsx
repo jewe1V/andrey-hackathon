@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/RegisterPage.css';
+import axios from 'axios';
 
 export const RegisterPage = () => {
     const [fullName, setFullName] = useState('');
@@ -11,18 +12,82 @@ export const RegisterPage = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         document.title = 'Зарегистрироваться';
-    });
+    }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setError('Пароли не совпадают');
             return;
         }
-        setError('');
-        console.log('Register:', { fullName, university, telegram, email, password });
+
+        // Валидация формы
+        const validateForm = () => {
+            // Проверка fullName: первая буква заглавная
+            if (!/^[A-ZА-Я][a-zа-я\s]*$/.test(fullName.trim())) {
+                return 'ФИО должно начинаться с заглавной буквы и содержать только буквы и пробелы';
+            }
+
+            // Проверка email: валидный формат
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                return 'Неверный формат email';
+            }
+
+            // Проверка telegram: начинается с @
+            if (!/^@[\w]+$/.test(telegram)) {
+                return 'Telegram должен начинаться с @ и содержать только буквы, цифры или подчеркивания';
+            }
+
+            // Проверка password: минимум 8 символов, содержит специальный символ
+            if (!/^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
+                return 'Пароль должен содержать минимум 8 символов и хотя бы один специальный символ (!@#$%^&*)';
+            }
+
+            // Проверка confirmPassword: совпадает с password
+            if (password !== confirmPassword) {
+                return 'Пароли не совпадают';
+            }
+
+            return null; // Нет ошибок
+        };
+
+        const handleSubmit = async (e) => {
+            e.preventDefault();
+
+            // Проверяем валидацию
+            const validationError = validateForm();
+            if (validationError) {
+                setError(validationError);
+                return;
+            }
+        };
+        const formattedTelegram = telegram.startsWith('@') ? telegram : `@${telegram}`;
+
+        try {
+            const response = await axios.post(`${API_URL}/auth/register`, {
+                id: 0,
+                fullname: fullName,
+                university: university,
+                email: email,
+                telegram: formattedTelegram,
+                password: password,
+                teamId: null,
+                role: 'user',
+            });
+            console.log('Registration successful:', response.data);
+            setError('');
+            navigate('/login');
+        } catch (e) {
+            console.error('Registration error:', e);
+            console.log(e.response?.data);
+            setError(
+                e.response.data
+            );
+        }
     };
 
     return (
